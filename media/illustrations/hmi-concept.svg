@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820" role="img" aria-label="Illustrative WinCC Unified-style conveyor monitoring HMI mockup">
+<defs><linearGradient id="back" x2="0" y2="1"><stop stop-color="#092032"/><stop offset="1" stop-color="#0a1321"/></linearGradient><linearGradient id="tile" x2="0" y2="1"><stop stop-color="#1e3a50"/><stop offset="1" stop-color="#0f2536"/></linearGradient><pattern id="roller" patternUnits="userSpaceOnUse" width="32" height="40"><rect width="32" height="40" fill="#253a4b"/><rect x="3" y="3" width="23" height="34" rx="7" fill="#567084"/><rect x="7" y="5" width="16" height="30" rx="6" fill="#9ab2c1"/></pattern></defs>
+<style>.head{font:700 39px Arial;fill:#f3fafe}.small{font:18px Arial;fill:#9bbbd0}.label{font:700 25px Arial;fill:#dfefff}.value{font:700 24px Arial;fill:#a5efda}.btn{font:700 23px Arial;fill:#fff}.warning{font:16px Arial;fill:#b4c7da}</style>
+<rect width="1500" height="820" fill="#071321"/><rect x="20" y="20" width="1460" height="780" rx="23" fill="url(#back)" stroke="#34556e" stroke-width="3"/>
+<rect x="40" y="40" width="1420" height="96" rx="13" fill="#15354d"/><text x="67" y="99" class="head">MULTI-ZONE CONVEYOR — OVERVIEW</text><rect x="1194" y="61" width="239" height="53" rx="12" fill="#164a43"/><text x="1221" y="95" class="value" font-size="21">AUTO MODE</text>
+<g>
+<rect x="56" y="174" width="424" height="315" rx="18" fill="url(#tile)" stroke="#4b7791" stroke-width="2"/><rect x="537" y="174" width="424" height="315" rx="18" fill="url(#tile)" stroke="#4b7791" stroke-width="2"/><rect x="1019" y="174" width="424" height="315" rx="18" fill="url(#tile)" stroke="#4b7791" stroke-width="2"/>
+<text x="93" y="221" class="label">ZONE 1 — INFEED</text><text x="573" y="221" class="label">ZONE 2 — ACCUMULATION</text><text x="1054" y="221" class="label">ZONE 3 — SORTATION</text>
+<rect x="96" y="247" width="344" height="120" rx="8" fill="url(#roller)" stroke="#abc7d6" stroke-width="4"/>
+<rect x="578" y="247" width="341" height="120" rx="8" fill="url(#roller)" stroke="#abc7d6" stroke-width="4"/>
+<rect x="1061" y="247" width="339" height="120" rx="8" fill="url(#roller)" stroke="#abc7d6" stroke-width="4"/>
+<rect x="198" y="264" width="138" height="87" rx="5" fill="#d3a26d" stroke="#f3cf9b" stroke-width="4"/>
+<rect x="683" y="264" width="138" height="87" rx="5" fill="#d3a26d" stroke="#f3cf9b" stroke-width="4"/>
+<rect x="1164" y="264" width="138" height="87" rx="5" fill="#d3a26d" stroke="#f3cf9b" stroke-width="4"/>
+<g fill="#16dba4"><circle cx="115" cy="420" r="17"/><circle cx="597" cy="420" r="17"/><circle cx="1078" cy="420" r="17"/></g>
+<g class="small"><text x="145" y="428">Motor command</text><text x="626" y="428">Motor command</text><text x="1108" y="428">Motor command</text></g>
+<text x="98" y="463" class="value">PACKAGE PRESENT</text><text x="578" y="463" class="value">PACKAGE PRESENT</text><text x="1059" y="463" class="value">TRANSFER REQUEST</text>
+</g>
+<rect x="57" y="525" width="910" height="209" rx="18" fill="#142d42" stroke="#446c83" stroke-width="2"/><text x="88" y="572" class="label">MACHINE CONTROL</text><text x="90" y="618" class="small">Machine state</text><text x="300" y="618" class="value">AUTO RUN</text><text x="90" y="665" class="small">General fault</text><text x="301" y="665" class="value">NO FAULT</text>
+<rect x="998" y="525" width="442" height="209" rx="18" fill="#142d42" stroke="#446c83" stroke-width="2"/><text x="1026" y="572" class="label">OPERATOR COMMANDS</text>
+<rect x="1028" y="608" width="119" height="68" rx="13" fill="#188c58"/><text x="1054" y="651" class="btn">START</text>
+<rect x="1154" y="608" width="116" height="68" rx="13" fill="#c43b43"/><text x="1184" y="651" class="btn">STOP</text>
+<rect x="1278" y="608" width="133" height="68" rx="13" fill="#3770ab"/><text x="1299" y="651" class="btn">RESET</text>
+<text x="66" y="772" class="warning">INTERFACE DESIGN CONCEPT — EXAMPLE VALUES ONLY. NOT A LIVE HMI OR SIMULATION CAPTURE.</text>
+</svg>
