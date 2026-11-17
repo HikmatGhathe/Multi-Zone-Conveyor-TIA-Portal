@@ -1,80 +1,91 @@
-# Multi-Zone Conveyor Routing & Sortation — Siemens TIA Portal V21
+# Multi-Zone Conveyor Routing & Sortation
 
-**Industrial automation portfolio | Siemens S7-1500 • SCL/ST • WinCC Unified PC RT • Conveyor control • Fault diagnostics**
+**Siemens S7-1500 | TIA Portal V21 | SCL | WinCC Unified | Industrial Automation**
 
-> **Project status (November 2026):** PLC logic and WinCC Unified HMI **compiled offline without errors** in TIA Portal V21. Full functional simulation/validation with S7-PLCSIM V21 is **not yet complete**, because download authorization was still pending. The provided `.scl` samples are bodies reconstructed from the development conversation, **not full exported TIA sources**.
+A three-zone material-handling automation project with controlled package accumulation, zone-to-zone handshakes, barcode-based routing, a pneumatic sorting diverter, and central machine diagnostics. The control system was developed as a public, independently written reconstruction of conveyor-automation work from an Amazon RME internship.
 
-![Conveyor architecture](media/diagrams/architecture.png)
+![Illustrated overview of a three-zone conveyor and sorting diverter](media/illustrations/conveyor-concept.svg)
 
-## Project at a glance
+> **Illustration:** A design visualization of the intended conveyor layout, not a real machine photograph or a recorded PLCSIM run.
 
-A three-zone accumulation and sortation controller built as an independent reconstruction of conveyor-automation concepts practiced during an Amazon RME internship. The portfolio version models package arrival with photo-eye inputs, reusable SCL state machines, transfer handshakes, downstream back-pressure, barcode-based routing, a pneumatic diverting sequence and centralized diagnostics. A WinCC Unified PC Runtime HMI has been configured with a PLC connection, occupancy/motor indicators, machine-state text and operator controls.
+## What the system does
 
-| Item | Description |
+1. **Zone 1 — Infeed.** Accepts a package request only when the receiving path is available. A photo-eye detects entry.
+2. **Zone 2 — Accumulation.** Uses sensor feedback and downstream availability to prevent overfeeding and coordinate transfers.
+3. **Zone 3 — Sortation.** Transfers packages into the routing area and coordinates with the diverter.
+4. **Barcode routing and pneumatic diverter.** A simulated barcode input selects a destination and the diverter controls package redirection.
+5. **Central supervision.** Machine Start/Stop/Reset, automatic mode, individual zone statuses, timeouts, fault codes, and interlocked motor commands.
+
+![Conceptual HMI screen illustrating zones and operator controls](media/illustrations/hmi-concept.svg)
+
+> **HMI concept:** Example visual design and sample values. The actual WinCC Unified editor screen is linked below.
+
+## Technology
+
+| Area | Implementation |
 |---|---|
-| Engineering | Siemens TIA Portal V21 / STEP 7 Professional |
-| PLC | S7-1500 CPU 1511-1 PN (configured) |
-| PLC languages | SCL (Structured Control Language), LAD/OB1 block integration |
-| Visualization | WinCC Unified PC RT / `Screen_Overview` |
-| Architecture | `Main [OB1]`, reusable FBs + instance DBs, auxiliary FCs |
-| Validation evidence | Offline compile screenshots; **no PLCSIM run yet** |
-| Native project export | **To be added from the author's TIA installation** |
+| PLC | S7-1500 CPU 1511-1 PN (TIA Portal configuration) |
+| Engineering | Siemens TIA Portal V21 / STEP 7 |
+| Programming | SCL (Structured Control Language), FB/FC architecture and OB1 calls |
+| Zone control | Three instances of `FB_ZoneControl` with separate instance DBs |
+| Sorting | `FB_Routing`, `FB_Diverter` |
+| Machine supervisor | `FB_MachineControl`, `FC_Diagnostics`, `FC_MotorInterlock`, `FC_Zone3Permit` |
+| HMI | WinCC Unified PC RT, `Screen_Overview`, S7 communication |
 
-## Conveyor sequence
+## Software architecture
 
-![Package flow](media/diagrams/process-flow.png)
+![PLC program architecture](media/diagrams/architecture.png)
 
-- **Zone 1 — Infeed:** accept an upstream package request when receive permission is present.
-- **Zone 2 — Accumulation:** coordinate downstream availability and back-pressure.
-- **Zone 3 — Sortation:** coordinate package transfer and the routing/diverter subsystem.
-- **Barcode routing:** interpret simulated barcode input and select the intended destination.
-- **Diverter:** command and verify a modeled pneumatic diverting position and exit sequence.
-- **Machine supervision:** machine mode, RunPermit, centralized fault monitoring, motor interlocks and HMI commands.
+The modular control software organizes repeated zone logic into function blocks with individual instance data blocks. Every zone has the state transitions:
 
-### SCL zone-state model
+```text
+EMPTY (0) -> LOADING (10) -> OCCUPIED (20)
+                                       |
+                                       v
+                              TRANSFERRING (30)
+                                       |
+                                       v
+                                   EMPTY (0)
 
-`FB_ZoneControl [FB1]` uses these states in the **user-shared Version 2 source**:
+FAULT (90) <- invalid sensor/state or timeout conditions
+```
 
-`0 EMPTY → 10 LOADING → 20 OCCUPIED → 30 TRANSFERRING → 0 EMPTY`, with `90 FAULT` for invalid signals/timeouts.
+The zone implementation includes 8-second loading and transfer monitoring, downstream-sensor transfer confirmation, and diagnostic fault reasons. See [architecture and state transitions](docs/architecture.md).
 
-The body includes TON-based loading/transfer timeouts, downstream-seen transfer confirmation and detailed fault codes. See [code](source/chat-reconstructed/FB_ZoneControl_V2_body.scl) and [architecture notes](docs/architecture.md).
+## Browse the source code
 
-## Implementation and screenshots
+- [FB_ZoneControl — SCL state-machine body](source/chat-reconstructed/FB_ZoneControl_V2_body.scl)
+- [FB_Diverter — development draft](source/chat-reconstructed/FB_Diverter_V2_body_from_discussion.scl)
+- [Source export guide](source/README.md)
 
-| PLC compilation | HMI network and connection |
+The SCL files currently published are the available development text, not the full exported block interfaces. Remaining complete TIA Portal exports and the native `.zap21` project can be added from the author's local engineering project.
+
+## Evidence from the engineering environment
+
+These are real TIA Portal V21 **engineering/configuration screenshots**. They document the actual project work; they are not images of parcels moving through a simulated conveyor.
+
+| PLC software | HMI / PLC communication |
 |---|---|
-| ![PLC compilation zero errors](media/screenshots/plc-compile-zero-errors.png) | ![Network](media/screenshots/plc-hmi-ethernet-network.png) |
+| ![PLC code compiled](media/screenshots/plc-compile-zero-errors.png) | ![PLC and HMI network](media/screenshots/plc-hmi-ethernet-network.png) |
+| [Zone 1 FB call](media/screenshots/zone-block-call.png) | [WinCC Unified screen editor](media/screenshots/hmi-screen-editor.png) |
+| [Watch table](media/screenshots/watch-table.png) | [HMI connection parameters](media/screenshots/hmi-connection-settings.png) |
 
-| WinCC Unified editor (work in progress) | Watch table |
-|---|---|
-| ![HMI](media/screenshots/hmi-screen-editor.png) | ![Watch table](media/screenshots/watch-table.png) |
+## Documentation
 
-Additional screenshot: [WinCC PLC communication settings](media/screenshots/hmi-connection-settings.png) • [FB zone call](media/screenshots/zone-block-call.png)
+- [Signal map and tags](docs/io-and-tags.csv)
+- [Architecture details](docs/architecture.md)
+- [Functional test scenarios](docs/test-plan.md)
+- [Project background](docs/project-background.md)
+- [Opening and exporting the native project](PUBLISHING.md)
 
-## Code and native project
+## Technical verification and scope
 
-### Browse the PLC SCL code
+PLC program blocks and the WinCC Unified PC Runtime configuration were compiled offline in TIA Portal V21 without reported compilation errors. A complete PLCSIM test run is **not represented by the published material**; the illustrative visuals above should not be interpreted as simulation results. A compilation result alone does not establish functional correctness or safety.
 
-- [`FB_ZoneControl_V2_body.scl`](source/chat-reconstructed/FB_ZoneControl_V2_body.scl) — full **body text** provided by the author in this conversation.
-- [`FB_Diverter_V2_body_from_discussion.scl`](source/chat-reconstructed/FB_Diverter_V2_body_from_discussion.scl) — assistant-origin development draft; **not a verified export**.
-- [`source/README.md`](source/README.md) — clear export checklist for all other blocks (Routing, Machine Control, diagnostics, permit, motor interlock, OB1).
-
-### Open in Siemens TIA Portal V21
-
-The native project archive (`.zap21`) has **not been supplied**. Once exported from the author's PC, it can be added under [`tia-portal-project/`](tia-portal-project/). GitHub shows readable `.scl` code and images in-browser, while the native archive requires TIA Portal to open.
-
-## Technical documents
-
-- [Architecture and state model](docs/architecture.md)
-- [PLC signal map](docs/io-and-tags.csv)
-- [Proposed functional test plan](docs/test-plan.md)
-- [Amazon internship vs independent reconstruction](docs/project-background.md)
-- [Source-code provenance](source/README.md)
-
-## Scope and safety
-
-This is a **portfolio/prototype** and must not be used for real conveyor control without electrical/pneumatic safety engineering, verified failsafe devices, drive and actuator interlocks, validated STOP/reset behavior and commissioning tests. `SYS_SafetyOK` is a simulated permissive, **not a certified safety function**. HMI STOP is **not** an emergency stop. The project is not an official Amazon implementation and includes no authorized Amazon source files.
+This independently reconstructed public version contains no original Amazon PLC program, internal plant drawing, or proprietary plant-network information. The simulated `SYS_SafetyOK` input is not a safety function, and an HMI Stop command is not an emergency stop. Real equipment would require safety engineering and commissioning validation.
 
 ## Author
 
-**Hikmat Ghathe** — B.Sc. Computer Engineering, industrial automation and embedded software. [GitHub profile](https://github.com/HikmatGhathe).
+**Hikmat Ghathe** · B.Sc. Computer Engineering · Industrial Automation / SPS / Embedded C/C++
+
+[GitHub profile](https://github.com/HikmatGhathe)
