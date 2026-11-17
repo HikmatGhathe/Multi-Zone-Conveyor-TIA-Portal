@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="360" viewBox="0 0 1080 360">
+<rect width="1080" height="360" fill="#f8fafc"/>
+<text x="540" y="45" font-family="Arial" font-size="27" font-weight="bold" fill="#0f172a" text-anchor="middle">Three-zone material flow and sorting</text>
+<rect x="45" y="105" width="250" height="105" rx="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="170" y="143" text-anchor="middle" font-size="21" fill="#1e40af" font-family="Arial" font-weight="bold">1. Infeed</text>
+<text x="170" y="175" text-anchor="middle" font-size="16" fill="#1e40af" font-family="Arial">Detect new parcel</text>
+<rect x="405" y="105" width="250" height="105" rx="13" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="530" y="143" text-anchor="middle" font-size="21" fill="#115e59" font-family="Arial" font-weight="bold">2. Accumulation</text>
+<text x="530" y="175" text-anchor="middle" font-size="16" fill="#115e59" font-family="Arial">Back-pressure / handshake</text>
+<rect x="765" y="105" width="250" height="105" rx="13" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="890" y="143" text-anchor="middle" font-size="21" fill="#92400e" font-family="Arial" font-weight="bold">3. Sortation</text>
+<text x="890" y="175" text-anchor="middle" font-size="16" fill="#92400e" font-family="Arial">Barcode routing + diverter</text>
+<path d="M295 158 H400 M655 158 H760" stroke="#334155" stroke-width="4"/><polygon points="400,158 385,150 385,166" fill="#334155"/><polygon points="760,158 745,150 745,166" fill="#334155"/>
+<path d="M890 210 V252 H760" stroke="#334155" stroke-width="3"/>
+<path d="M890 252 H1010" stroke="#334155" stroke-width="3"/>
+<text x="760" y="274" font-size="17" text-anchor="middle" fill="#0f766e" font-family="Arial">Destination A</text>
+<text x="1010" y="274" font-size="17" text-anchor="middle" fill="#b45309" font-family="Arial">Destination B</text>
+<text x="540" y="330" font-size="15" text-anchor="middle" fill="#64748b" font-family="Arial">Conceptual process flow; sequence requires PLCSIM validation</text>
+</svg>

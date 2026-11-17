@@ -1,0 +1,27 @@
+Tag,Address,Data type,Description,Source
+SYS_StartCmd,%M32.0,Bool,HMI start command,Watch table screenshot
+SYS_StopCmd,%M32.1,Bool,HMI stop command,Watch table screenshot
+SYS_ResetCmd,%M32.2,Bool,Machine reset command,Watch table screenshot
+SYS_AutoMode,%M32.3,Bool,Auto mode selector,Watch table screenshot
+SYS_SafetyOK,%M32.4,Bool,Simulated permissive not safety-rated,Watch table screenshot
+SYS_RunPermit,%M33.0,Bool,Machine run permission,Watch table screenshot
+SYS_MachineState,%MW34,Int,Machine state code,Watch table screenshot
+SYS_AnyFault,%M26.0,Bool,Central fault,Watch table screenshot
+Z1_StateCode,%MW2,Int,Zone 1 state,Watch table screenshot
+Z2_StateCode,%MW6,Int,Zone 2 state,Watch table screenshot
+Z3_StateCode,%MW10,Int,Zone 3 state,Watch table screenshot
+D_StateCode,%MW14,Int,Diverter state,Watch table screenshot
+R_Barcode,%MW16,Int,Simulated barcode,Watch table screenshot
+ACT_Z1MotorRun,%M36.0,Bool,Motor command Zone 1,Watch table screenshot
+ACT_Z2MotorRun,%M36.1,Bool,Motor command Zone 2,Watch table screenshot
+ACT_Z3MotorRun,%M36.2,Bool,Motor command Zone 3,Watch table screenshot
+Z1_Enable,%M0.0,Bool,Zone 1 enable,OB1 screenshot
+Z1_PhotoEye,%M0.1,Bool,Zone 1 sensor,OB1 screenshot
+Z1_UpstreamRequest,%M0.2,Bool,Zone 1 upstream request,OB1 screenshot
+Z1_ResetFault,%M0.4,Bool,Earlier Zone 1 reset wiring,OB1 screenshot
+Z1_MotorForward,%M1.0,Bool,Zone 1 motor command,OB1 screenshot
+Z1_ZoneOccupied,%M1.1,Bool,Zone 1 occupied output,OB1 screenshot
+Z1_ReadyToReceive,%M1.2,Bool,Zone 1 ready signal,OB1 screenshot
+Z1_TransferRequest,%M1.3,Bool,Zone 1 transfer request,OB1 screenshot
+Z1_Fault,%M1.4,Bool,Zone 1 fault output,OB1 screenshot
+Z2_ReadyToReceive,%M5.3,Bool,Zone 2 ready signal,OB1 screenshot

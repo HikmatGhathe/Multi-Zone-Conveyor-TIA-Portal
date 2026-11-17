@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="630" viewBox="0 0 1100 630">
+<rect width="1100" height="630" fill="#f8fafc"/>
+<text x="550" y="55" font-family="Arial" font-size="29" font-weight="700" fill="#0f172a" text-anchor="middle">Multi-Zone Conveyor — Control Architecture</text>
+<rect x="68" y="94" width="960" height="86" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="548" y="129" font-family="Arial" font-size="23" font-weight="bold" fill="#1e40af" text-anchor="middle">WinCC Unified PC RT — HMI_Conveyor</text>
+<text x="548" y="157" font-family="Arial" font-size="17" fill="#1e40af" text-anchor="middle">Machine state · Start / Stop / Reset · Auto mode · Zone occupancy · Motor indicators</text>
+<path d="M548 180 L548 225" stroke="#334155" stroke-width="3"/><polygon points="548,230 540,216 556,216" fill="#334155"/>
+<rect x="68" y="230" width="960" height="98" rx="14" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+<text x="548" y="267" font-family="Arial" font-size="23" font-weight="bold" fill="#312e81" text-anchor="middle">S7-1500 PLC — Main OB1 / Machine Supervisor</text>
+<text x="548" y="302" font-family="Arial" font-size="17" fill="#312e81" text-anchor="middle">FB_MachineControl · FC_MotorInterlock · FC_Diagnostics · FC_Zone3Permit</text>
+<path d="M260 328 L260 370 M548 328 L548 370 M835 328 L835 370" stroke="#334155" stroke-width="3"/>
+<rect x="68" y="370" width="290" height="119" rx="12" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="213" y="408" font-size="21" font-family="Arial" font-weight="bold" fill="#115e59" text-anchor="middle">Zone 1 — Infeed</text>
+<text x="213" y="439" font-size="17" font-family="Arial" fill="#115e59" text-anchor="middle">FB_ZoneControl + DB1</text>
+<text x="213" y="464" font-size="16" font-family="Arial" fill="#115e59" text-anchor="middle">Photo-eye · Motor</text>
+<rect x="404" y="370" width="290" height="119" rx="12" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="549" y="408" font-size="21" font-family="Arial" font-weight="bold" fill="#115e59" text-anchor="middle">Zone 2 — Accumulation</text>
+<text x="549" y="439" font-size="17" font-family="Arial" fill="#115e59" text-anchor="middle">FB_ZoneControl + DB2</text>
+<text x="549" y="464" font-size="16" font-family="Arial" fill="#115e59" text-anchor="middle">Back-pressure control</text>
+<rect x="739" y="370" width="290" height="119" rx="12" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+<text x="884" y="408" font-size="21" font-family="Arial" font-weight="bold" fill="#115e59" text-anchor="middle">Zone 3 — Sortation</text>
+<text x="884" y="439" font-size="17" font-family="Arial" fill="#115e59" text-anchor="middle">FB_ZoneControl + DB3</text>
+<text x="884" y="464" font-size="16" font-family="Arial" fill="#115e59" text-anchor="middle">Barcode · Diverter</text>
+<path d="M359 430 L399 430 M695 430 L735 430" stroke="#64748b" stroke-width="3"/><polygon points="400,430 390,423 390,437" fill="#64748b"/><polygon points="736,430 726,423 726,437" fill="#64748b"/>
+<rect x="560" y="532" width="468" height="60" rx="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+<text x="794" y="555" font-family="Arial" font-size="18" font-weight="bold" fill="#9a3412" text-anchor="middle">FB_Routing + FB_Diverter</text>
+<text x="794" y="579" font-family="Arial" font-size="15" fill="#9a3412" text-anchor="middle">Destination A / B · Pneumatic position · Exit sensor</text>
+<path d="M885 490 L885 532" stroke="#ea580c" stroke-width="3"/>
+<text x="78" y="560" font-size="14" font-family="Arial" fill="#64748b">Conceptual diagram · Offline compile verified · PLCSIM validation pending</text>
+</svg>
