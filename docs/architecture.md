@@ -28,4 +28,4 @@ Fault reasons in the shared zone body: **10** loading timeout, **20** transfer t
 
 ## Physical and safety boundaries
 
-This is a simulation-oriented demonstration. The 2026 reconstruction was compiled offline, not validated against S7-PLCSIM or real drives. SYS_SafetyOK is a simulated permissive and not a safety-rated circuit; the HMI STOP is not an emergency stop. Reset and handshake sequences need functional review before commissioning.
+The published TIA Portal V21 portfolio implementation compiles offline. Separate to the real-conveyor commissioning work performed during the Amazon internship, this specific public project version has not been shown running against S7-PLCSIM or physical drives. SYS_SafetyOK is a simulated permissive and not a safety-rated circuit; the HMI STOP is not an emergency stop. Reset and handshake sequences need functional review before commissioning.
