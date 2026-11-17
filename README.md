@@ -4,9 +4,11 @@
 
 A three-zone material-handling automation project with controlled package accumulation, zone-to-zone handshakes, barcode-based routing, a pneumatic sorting diverter, and central machine diagnostics. The control system was developed as a public, independently written reconstruction of conveyor-automation work from an Amazon RME internship.
 
-![Illustrated overview of a three-zone conveyor and sorting diverter](media/illustrations/conveyor-concept.svg)
+![3D design visualization of the conveyor, three zones, scanner, pneumatic diverter, and two output lanes](media/illustrations/conveyor-visual-concept.jpg)
 
-> **Illustration:** A design visualization of the intended conveyor layout, not a real machine photograph or a recorded PLCSIM run.
+*Original conceptual render of the conveyor system and its intended operating layout (not a real-plant photo or runtime capture).*
+
+[Detailed engineering layout](media/illustrations/conveyor-concept.svg)
 
 ## What the system does
 
@@ -15,6 +17,14 @@ A three-zone material-handling automation project with controlled package accumu
 3. **Zone 3 — Sortation.** Transfers packages into the routing area and coordinates with the diverter.
 4. **Barcode routing and pneumatic diverter.** A simulated barcode input selects a destination and the diverter controls package redirection.
 5. **Central supervision.** Machine Start/Stop/Reset, automatic mode, individual zone statuses, timeouts, fault codes, and interlocked motor commands.
+
+### Sorting mechanism — detailed view
+
+![Illustrative barcode detection and pneumatic diverter](media/illustrations/sorting-detail-concept.jpg)
+
+*Original conceptual render of the barcode reader, photoelectric sensor, and pneumatic sorting mechanism.*
+
+### HMI concept
 
 ![Conceptual HMI screen illustrating zones and operator controls](media/illustrations/hmi-concept.svg)
 
