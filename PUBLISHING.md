@@ -1,23 +1,23 @@
-# How to publish this local repository on GitHub
+# Opening the engineering project
 
-1. Sign in as `HikmatGhathe` and create a **Public** repo named `Multi-Zone-Conveyor-TIA-Portal` at https://github.com/new .
-2. Extract this ZIP locally; **upload the files inside** the `Multi-Zone-Conveyor-TIA-Portal` folder, not only the ZIP file. GitHub web UI: **Add file → Upload files → Commit changes**.
-3. Ensure that `README.md` is at repository root. GitHub will render it automatically along with linked diagrams/screenshots.
-4. Check direct link `https://github.com/HikmatGhathe/Multi-Zone-Conveyor-TIA-Portal` after publishing. This link is **not live before repository creation**.
-5. Later export the real SCL code (complete interface) and `.zap21` archive from TIA Portal and add them under `source/tia-export/` and `tia-portal-project/`. Use Git/Git LFS for large archive files rather than the browser uploader if the archive exceeds size limits.
-6. Before publishing review all screenshots/exports to make sure they contain no employer-internal data, login information, IPs intended to stay private or other confidential material. The included images have had Windows title bars removed where possible.
+The public repository is already online at [Multi-Zone-Conveyor-TIA-Portal](https://github.com/HikmatGhathe/Multi-Zone-Conveyor-TIA-Portal).
 
-## Via Git commands instead of the browser
+## View code and documentation without TIA Portal
 
-From inside the extracted folder, after you create the empty GitHub repository:
+GitHub renders the README, SVG diagrams, screenshots, and SCL source-body files directly in the browser. Start from the main README to understand the package flow, zone state machines, routing and diagnostic logic.
 
-```bash
-git init
-git add .
-git commit -m "Document Multi-Zone Conveyor TIA Portal portfolio"
-git branch -M main
-git remote add origin https://github.com/HikmatGhathe/Multi-Zone-Conveyor-TIA-Portal.git
-git push -u origin main
-```
+## Reproduce the native TIA Portal V21 project
 
-Do **not** claim unexecuted PLCSIM tests as passed. Add simulation evidence and outcome videos later.
+The native TIA project archive is stored only on the author's Windows machine at present; it is not included in this public repository.
+
+To add a reproducible project later:
+
+1. Open the locally authored `Multi_Zone_Conveyor_V21` project in TIA Portal V21.
+2. Compile PLC and HMI; save the project.
+3. Use **Project → Archive** to generate a `.zap21` archive.
+4. Export self-authored SCL source blocks with **Generate source from blocks** for `FB_ZoneControl`, `FB_Diverter`, `FB_Routing`, `FB_MachineControl`, `FC_Diagnostics`, `FC_MotorInterlock` and `FC_Zone3Permit`.
+5. Add exported SCL files to `source/tia-export/` and project archive to `tia-portal-project/`.
+
+Do not upload any Amazon-owned source code, production plant addresses, credentials, or employer network details.
+
+The visible diagrams and UI illustration depict the project concept; they are not recorded software runtime results. 
