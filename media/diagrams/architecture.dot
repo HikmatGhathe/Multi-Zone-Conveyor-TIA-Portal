@@ -1,0 +1,17 @@
+digraph Conveyor {
+  graph [rankdir=LR, label="Multi-Zone Conveyor logical PLC/HMI architecture", labelloc=t, fontsize=20];
+  node [shape=box, style="rounded,filled", fillcolor="#eef4fb"];
+  HMI [label="WinCC Unified PC RT\nScreen_Overview"];
+  PLC [label="S7-1500 CPU 1511-1 PN\nMain OB1"];
+  MC [label="FB_MachineControl FB4"];
+  Z1 [label="FB_ZoneControl FB1\nDB_Zone1 DB1"];
+  Z2 [label="FB_ZoneControl FB1\nDB_Zone2 DB2"];
+  Z3 [label="FB_ZoneControl FB1\nDB_Zone3 DB3"];
+  RT [label="FB_Routing FB3"];
+  DV [label="FB_Diverter FB2"];
+  DX [label="FC_Diagnostics FC2"];
+  IL [label="FC_MotorInterlock FC3"];
+  HMI -> PLC [label="HMI_Connection_1"];
+  PLC -> MC; PLC -> Z1; PLC -> Z2; PLC -> Z3; PLC -> RT; PLC -> DV; PLC -> DX; PLC -> IL;
+  Z1 -> Z2 [label="request/ready"]; Z2 -> Z3 [label="request/ready"]; RT -> DV [label="destination"]; 
+}

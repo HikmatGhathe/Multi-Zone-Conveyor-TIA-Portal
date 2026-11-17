@@ -1,0 +1,6 @@
+digraph Process {
+ graph [rankdir=LR,label="Conceptual conveyor material flow — not a validated physical layout",labelloc=t,fontsize=19];
+ node [shape=box,style="rounded,filled",fillcolor="#edf4fa"];
+ IN [label="Package arrival / photo-eye"]; Z1 [label="Zone 1: Infeed"]; Z2 [label="Zone 2: Accumulation"]; Z3 [label="Zone 3: Sortation"]; A [label="Destination A"]; B [label="Destination B"];
+ IN -> Z1 -> Z2 -> Z3; Z3 -> A [label="Barcode A"]; Z3 -> B [label="Barcode B"];
+}
