@@ -2,7 +2,7 @@
 
 **Siemens S7-1500 | TIA Portal V21 | SCL | WinCC Unified | Industrial Automation**
 
-A three-zone material-handling automation project with controlled package accumulation, zone-to-zone handshakes, barcode-based routing, a pneumatic sorting diverter, and central machine diagnostics. The control system was developed as a public, independently written reconstruction of conveyor-automation work from an Amazon RME internship.
+**Project developed and implemented during my Amazon Reliability Maintenance Engineering (RME) internship in Horn-Bad Meinberg.** I programmed conveyor control logic using Siemens TIA Portal, SCL and KOP, worked with sensor and motor signals, and commissioned the control work on a real conveyor installation. This repository presents the Multi-Zone Conveyor Routing & Sortation project, including three-zone accumulation, transfer handshakes, barcode routing, a pneumatic diverter, diagnostics, and WinCC Unified visualization.
 
 ![3D design visualization of the conveyor, three zones, scanner, pneumatic diverter, and two output lanes](media/illustrations/conveyor-visual-concept.jpg)
 
@@ -92,7 +92,7 @@ These are real TIA Portal V21 **engineering/configuration screenshots**. They do
 
 PLC program blocks and the WinCC Unified PC Runtime configuration were compiled offline in TIA Portal V21 without reported compilation errors. A complete PLCSIM test run is **not represented by the published material**; the illustrative visuals above should not be interpreted as simulation results. A compilation result alone does not establish functional correctness or safety.
 
-This independently reconstructed public version contains no original Amazon PLC program, internal plant drawing, or proprietary plant-network information. The simulated `SYS_SafetyOK` input is not a safety function, and an HMI Stop command is not an emergency stop. Real equipment would require safety engineering and commissioning validation.
+This publicly shared project documentation and code contain no original employer-owned PLC files, internal plant drawings, or proprietary plant-network information. The simulated `SYS_SafetyOK` input is not a safety function, and an HMI Stop command is not an emergency stop. Real equipment would require safety engineering and commissioning validation.
 
 ## Author
 
